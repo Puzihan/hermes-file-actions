@@ -1,4 +1,4 @@
 name: file-actions
-version: 1.0.0
+version: 1.0.1
 description: "OS actions for file paths the assistant mentions in chat: reveal in the file manager (selects the file), open with the OS default app, copy the path. Registers the ::filerow{path=\"…\"} transcript directive."
 author: "Zihan Pu (@Puzihan)"

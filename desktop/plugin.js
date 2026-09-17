@@ -54,6 +54,12 @@ function fileUrl(p) {
   return 'file://' + (/^[a-zA-Z]:/.test(norm) || norm.startsWith('//') ? '/' : '') + norm
 }
 
+// A UNC path is untrusted, model-supplied text: shell.showItemInFolder would make
+// Windows dial that host and offer NTLM credentials, so reveal is never offered for it.
+function isUncPath(p) {
+  return p.startsWith('\\\\') || p.startsWith('//')
+}
+
 function basename(p) {
   const t = p.replace(/[\\/]+$/, '')
   return t.split(/[\\/]/).pop() || t
@@ -137,10 +143,10 @@ function FileRow({ attrs, streaming }) {
       jsxs('div', {
         className: 'flex flex-wrap items-center gap-1',
         children: [
-          button(t('reveal'), t('revealTip'), onReveal),
+          isUncPath(path) ? null : button(t('reveal'), t('revealTip'), onReveal),
           button(t('open'), t('openTip'), onOpen),
           button(t('copy'), t('copyTip'), onCopy)
-        ]
+        ].filter(Boolean)
       })
     ]
   })

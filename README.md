@@ -72,6 +72,13 @@ sends the path anywhere.
   is an agent-side job (a script + `::preview{file="…"}`), not a plugin capability — a plugin
   can render UI, but it cannot shell out to convert a document.
 
+## Safety notes
+
+- **UNC paths are never revealed.** `\\host\share` is refused before any OS call: resolving it makes
+  Windows dial that host and offer NTLM credentials, and the path arrives as model-supplied text.
+- Reveal / open are best-effort OS actions: when the desktop bridge does not expose them (or the
+  path is not a real local path), the plugin reports it instead of failing silently.
+
 ## License
 
 MIT — see `LICENSE`.
