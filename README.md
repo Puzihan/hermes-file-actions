@@ -72,6 +72,21 @@ sends the path anywhere.
   is an agent-side job (a script + `::preview{file="…"}`), not a plugin capability — a plugin
   can render UI, but it cannot shell out to convert a document.
 
+## Installing as a package (unified install)
+
+`hermes plugins install Puzihan/hermes-file-actions` installs the package, but the desktop
+half of a **unified package** is opt-in inside the app — the app projects
+`desktop/plugin.js` out to `desktop-plugins/<id>/` with a `.hermes-package.json` marker and
+leaves it dark until you enable it. Turn it on in the app: **Capabilities → Plugins**
+(or ⌘K → *Reload desktop plugins* after changing files).
+
+Simplest always-on alternative — the plain disk door the SDK recommends:
+
+```bash
+mkdir -p "$HERMES_HOME/desktop-plugins/file-actions"
+cp desktop/plugin.js "$HERMES_HOME/desktop-plugins/file-actions/plugin.js"
+```
+
 ## Safety notes
 
 - **UNC paths are never revealed.** `\\host\share` is refused before any OS call: resolving it makes
