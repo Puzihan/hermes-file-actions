@@ -1,0 +1,26 @@
+# Prepared catalog entry for hermes-file-actions.
+#
+# NOT submitted yet: plugin-catalog/README.md rule 3 requires the pinned release to be at least
+# two weeks old at pin time (supply-chain maturity). Publish date was 2026-09-17, so the earliest
+# submission is ~2026-10-01. At PR time: replace `sha` with the 40-hex SHA of the commit to pin
+# (a commit that is itself ≥2 weeks old, i.e. likely this one or an early follow-up), then open a
+# PR to NousResearch/hermes-agent adding plugin-catalog/file-actions.yaml. Rule 5: the submission
+# must come from the repo owner, which is us.
+#
+# Copy the block below (minus these comments) into plugin-catalog/file-actions.yaml.
+
+name: file-actions
+repo: https://github.com/Puzihan/hermes-file-actions
+sha: 0000000000000000000000000000000000000000   # ← pin at PR time (≥2 weeks old)
+description: Per-file actions in the chat transcript — reveal a file in the OS file manager with
+  the file selected, open it with the default app, or copy its path, via the ::filerow{path=…}
+  transcript directive.
+maintainer: Puzihan
+tier: community
+docs_url: https://github.com/Puzihan/hermes-file-actions
+platforms: []          # desktop plugin; the desktop app itself ships for linux/macos/windows
+capabilities:
+  provides_tools: []
+  provides_hooks: []
+  provides_middleware: []
+  requires_env: []

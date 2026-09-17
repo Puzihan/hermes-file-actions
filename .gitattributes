@@ -1,0 +1,5 @@
+# Keep the stored text LF so a Windows checkout can't rewrite the plugin files
+# (a CRLF working copy is what makes `git status` report phantom modifications).
+* text=auto eol=lf
+*.png binary
+*.ico binary
